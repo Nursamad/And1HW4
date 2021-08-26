@@ -16,7 +16,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
 
     public void setList(ArrayList<Music> list) {
         this.list = new ArrayList<>();
-        this.list.addAll(list);
+        this.list.remove(list);
         notifyDataSetChanged();
     }
 

@@ -32,6 +32,11 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initRecycler(view);
         createList();
+        initListener();
+    }
+
+    private void initListener() {
+
     }
 
     private void createList() {
@@ -47,6 +52,8 @@ public class SecondFragment extends Fragment {
         list.add(new Music("Tgg", "Santiz", "3:08"));
         list.add(new Music("За закатом", "Santiz", "2:37"));
     }
+
+
 
     private void initRecycler(View view) {
         recyclerView = view .findViewById(R.id.recycler_view);
