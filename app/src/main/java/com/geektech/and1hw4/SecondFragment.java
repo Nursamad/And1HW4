@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 
-public class SecondFragment extends Fragment {
+public class SecondFragment extends Fragment implements MusicAdapter.OnClick{
 
     private RecyclerView recyclerView;
     private MusicAdapter adapter;
@@ -30,18 +31,15 @@ public class SecondFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull  View view, @Nullable  Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initRecycler(view);
         createList();
-        initListener();
+        initRecycler(view);
     }
 
-    private void initListener() {
 
-    }
 
     private void createList() {
         list = new ArrayList<>();
-        list.add(new Music("А мне бы просто тепла родных", "Santiz", "3:28"));
+        list.add(new Music("Тепла родных", "Santiz", "3:28"));
         list.add(new Music("Забытый бала", "Santiz", "2:38"));
         list.add(new Music("Второй дом", "Santiz", "4:29"));
         list.add(new Music("Rastafari", "Santiz", "2:30"));
@@ -58,7 +56,12 @@ public class SecondFragment extends Fragment {
     private void initRecycler(View view) {
         recyclerView = view .findViewById(R.id.recycler_view);
         adapter = new MusicAdapter();
-        adapter.setList(list);
+        adapter.setList(list , this);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(Music music) {
+        Toast.makeText(requireContext() , music.getName() , Toast.LENGTH_SHORT).show();
     }
 }

@@ -13,10 +13,12 @@ import java.util.ArrayList;
 public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> {
 
     private ArrayList<Music> list;
+    private OnClick onClick;
 
-    public void setList(ArrayList<Music> list) {
+    public void setList(ArrayList<Music> list, OnClick onClick) {
         this.list = new ArrayList<>();
-        this.list.remove(list);
+        this.list.addAll(list);
+        this.onClick = onClick;
         notifyDataSetChanged();
     }
 
@@ -45,13 +47,21 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
             name = itemView.findViewById(R.id.tv_music);
             author = itemView.findViewById(R.id.tv_author);
             time = itemView.findViewById(R.id.tv_time);
+
         }
 
         public void onBind(Music music) {
             name.setText(music.getName());
             author.setText(music.getAuthor());
             time.setText(music.getTime());
+            itemView.setOnClickListener(v ->{
+                onClick.onItemClick(music);
+            });
 
         }
+    }
+
+    public interface OnClick{
+        void onItemClick(Music music);
     }
 }
