@@ -1,5 +1,6 @@
 package com.geektech.and1hw4;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,7 @@ public class SecondFragment extends Fragment implements MusicAdapter.OnClick{
         super.onViewCreated(view, savedInstanceState);
         createList();
         initRecycler(view);
+
     }
 
 
@@ -58,10 +60,12 @@ public class SecondFragment extends Fragment implements MusicAdapter.OnClick{
         adapter = new MusicAdapter();
         adapter.setList(list , this);
         recyclerView.setAdapter(adapter);
+
     }
 
     @Override
     public void onItemClick(Music music) {
+
         Toast.makeText(requireContext() , music.getName() , Toast.LENGTH_SHORT).show();
     }
 }
