@@ -65,7 +65,6 @@ public class SecondFragment extends Fragment implements MusicAdapter.OnClick{
 
     @Override
     public void onItemClick(Music music) {
-
         Toast.makeText(requireContext() , music.getName() , Toast.LENGTH_SHORT).show();
     }
 }
